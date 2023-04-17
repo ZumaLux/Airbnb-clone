@@ -20,6 +20,7 @@ const TripsClient: React.FC<TripsClientProps> = ({ reservations, currentUser }) 
   const onCancel = useCallback(
     (id: string) => {
       setDeletingId(id);
+
       axios
         .delete(`/api/reservations/${id}`)
         .then(() => {
@@ -70,5 +71,3 @@ const TripsClient: React.FC<TripsClientProps> = ({ reservations, currentUser }) 
 };
 
 export default TripsClient;
-
-// 7:11:00

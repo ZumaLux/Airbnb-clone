@@ -35,10 +35,13 @@ export default function RegisterModal() {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     // we make sure the we pass the values we want
     setIsLoading(true);
+
     axios
       .post("/api/register", data)
       .then(() => {
+        toast.success("Success!");
         registerModal.onClose();
+        loginModal.onOpen();
       })
       .catch((error) => {
         toast.error("Something went wrong!");
