@@ -5,22 +5,22 @@ import { toast } from "react-hot-toast";
 import { SafeUser } from "../types";
 import useLoginModal from "./useLoginModal";
 
-interface IUseFavourite {
+interface IUseFavorite {
   listingId: string;
   currentUser?: SafeUser | null;
 }
 
-const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
+const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
   const router = useRouter();
   const loginModal = useLoginModal();
 
-  const hasFavourited = useMemo(() => {
-    const list = currentUser?.favouriteIds || [];
+  const hasFavorited = useMemo(() => {
+    const list = currentUser?.favoriteIds || [];
 
     return list.includes(listingId);
   }, [currentUser, listingId]);
 
-  const toggleFavourite = useCallback(
+  const toggleFavorite = useCallback(
     async (e: React.MouseEvent<HTMLDivElement>) => {
       e.stopPropagation();
 
@@ -29,10 +29,10 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
       try {
         let requset;
 
-        if (hasFavourited) {
-          requset = () => axios.delete(`/api/favourites/${listingId}`);
+        if (hasFavorited) {
+          requset = () => axios.delete(`/api/favorites/${listingId}`);
         } else {
-          requset = () => axios.post(`/api/favourites/${listingId}`);
+          requset = () => axios.post(`/api/favorites/${listingId}`);
         }
         await requset();
         router.refresh();
@@ -41,10 +41,10 @@ const useFavourite = ({ listingId, currentUser }: IUseFavourite) => {
         toast.error("Something went wrong!");
       }
     },
-    [currentUser, hasFavourited, listingId, loginModal, router]
+    [currentUser, hasFavorited, listingId, loginModal, router]
   );
 
-  return { hasFavourited, toggleFavourite };
+  return { hasFavorited, toggleFavorite };
 };
 
-export default useFavourite;
+export default useFavorite;

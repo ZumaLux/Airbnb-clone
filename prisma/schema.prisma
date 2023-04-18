@@ -19,7 +19,7 @@ model User {
   hashedPassword String? //not required cuz we are gona also allow google login
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  favouriteIds String[] @db.ObjectId
+  favoriteIds String[] @db.ObjectId
 
   accounts Account[]
   listings Listing[]

@@ -8,14 +8,14 @@ interface HeartButtonprops {
 import React from "react";
 import { SafeUser } from "../types";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import useFavourite from "../hooks/useFavourite";
+import useFavorite from "../hooks/useFavorite";
 
 const HeartButton: React.FC<HeartButtonprops> = ({ listingId, currentUser }) => {
-  const { hasFavourited, toggleFavourite } = useFavourite({ listingId, currentUser });
+  const { hasFavorited, toggleFavorite } = useFavorite({ listingId, currentUser });
 
   return (
     <div
-      onClick={toggleFavourite}
+      onClick={toggleFavorite}
       className="
     relative
     hover:opacity-80
@@ -31,7 +31,7 @@ const HeartButton: React.FC<HeartButtonprops> = ({ listingId, currentUser }) => 
       -top-[2px] 
       -right-[2px]"
       />
-      <AiFillHeart size={24} className={hasFavourited ? "fill-rose-500" : "fill-neutral-500/70"} />
+      <AiFillHeart size={24} className={hasFavorited ? "fill-rose-500" : "fill-neutral-500/70"} />
     </div>
   );
 };
