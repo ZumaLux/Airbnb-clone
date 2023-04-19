@@ -18,7 +18,7 @@ enum STEPS {
   INFO = 2,
 }
 
-const searchModal = () => {
+const SearchModal = () => {
   const searchModal = useSearchModal();
   const router = useRouter();
   const params = useSearchParams();
@@ -168,4 +168,4 @@ const searchModal = () => {
   );
 };
 
-export default searchModal;
+export default SearchModal;
